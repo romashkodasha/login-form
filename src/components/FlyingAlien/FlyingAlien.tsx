@@ -1,12 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import imageSrc from 'assets/cat.png';
 
+const VELOCITY = 4;
+
 const FlyingAlien: React.FC = () => {
   const alienRef = useRef<HTMLImageElement>(null);
   const position = useRef({ x: 100, y: 100 });
   const velocity = useRef({
-    vx: 2 + Math.random() * 3,
-    vy: 2 + Math.random() * 3,
+    vx: VELOCITY,
+    vy: VELOCITY,
   });
   const size = { width: 100, height: 100 };
 
@@ -21,8 +23,14 @@ const FlyingAlien: React.FC = () => {
       let { x, y } = position.current;
       let { vx, vy } = velocity.current;
 
-      if (x + size.width >= screenWidth || x <= 0) vx = -vx;
-      if (y + size.height >= screenHeight || y <= 0) vy = -vy;
+      if (x + size.width >= screenWidth || x <= 0) {
+        console.log('Hit horizontal boundary');
+        vx = -vx;
+      }
+      if (y + size.height >= screenHeight || y <= 0) {
+        console.log('Hit verticall boundary');
+        vy = -vy;
+      }
 
       x += vx;
       y += vy;
