@@ -21,12 +21,23 @@ const Login: React.FC = () => {
     setLoading(true);
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const mockFetch = () =>
+        new Promise<{ ok: boolean; message: string }>((resolve) =>
+          setTimeout(() => {
+            if (email === 'test@example.com' && password === '123456') {
+              resolve({ ok: true, message: 'Login successful' });
+            } else {
+              resolve({ ok: false, message: 'Invalid email or password' });
+            }
+          }, 1000)
+        );
 
-      if (email === 'test@example.com' && password === '123456') {
+      const response = await mockFetch();
+
+      if (response.ok) {
         setSuccess(true);
       } else {
-        setError('Invalid email or password');
+        setError(response.message);
       }
     } finally {
       setLoading(false);
