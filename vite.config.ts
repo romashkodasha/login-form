@@ -5,6 +5,7 @@ import path from 'path';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: 'login-form',
   resolve: {
     alias: {
       '~styles': path.resolve(__dirname, 'src/styles'),
