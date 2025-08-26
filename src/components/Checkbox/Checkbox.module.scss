@@ -1,0 +1,51 @@
+@use "~styles/colors" as *;
+@use "~styles/typography" as *;
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 14px;
+  color: $white;
+
+  .input {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid $white-80;
+    border-radius: 4px;
+    background: transparent;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover,
+    &:focus {
+      border-color: $white;
+      box-shadow: 0 0 5px $white-40;
+    }
+
+    &:checked {
+      background: $white;
+      border-color: $white;
+    }
+
+    &:checked::after {
+      content: "";
+      width: 3px;
+      height: 10px;
+      border: solid $black;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+      transition: all 0.2s ease-in-out;
+    }
+  }
+
+  .label {
+    cursor: pointer;
+  }
+}

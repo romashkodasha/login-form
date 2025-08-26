@@ -1,0 +1,33 @@
+@use "~styles/colors" as *;
+@use "~styles/typography" as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  color: $white;
+  margin-bottom: 5px;
+}
+
+.input {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid $white;
+  color: $white;
+  transition: all 0.2s ease-in-out;
+
+  &::placeholder {
+    color: $white;
+  }
+
+  &:focus,
+  &:hover {
+    outline: none;
+    border-color: $white;
+    box-shadow: 0 0 6px $white-40;
+  }
+}

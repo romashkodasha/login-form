@@ -1,0 +1,17 @@
+@mixin heading($size: 24px, $weight: 600, $line-height: 1.2) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
+}
+
+@mixin textS($size: 14px, $weight: 400, $line-height: 1.5) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
+}
+
+@mixin textM($size: 16px, $weight: 400, $line-height: 1.5) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
+}
