@@ -6,11 +6,34 @@ const VELOCITY = 4;
 const FlyingAlien: React.FC = () => {
   const alienRef = useRef<HTMLImageElement>(null);
   const position = useRef({ x: 100, y: 100 });
-  const velocity = useRef({
-    vx: VELOCITY,
-    vy: VELOCITY,
-  });
+  const velocity = useRef({ vx: VELOCITY, vy: VELOCITY });
   const size = { width: 100, height: 100 };
+
+  useEffect(() => {
+    const handleResize = () => {
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
+
+      let { x, y } = position.current;
+
+      if (x + size.width > screenWidth) {
+        x = screenWidth - size.width;
+      }
+      if (y + size.height > screenHeight) {
+        y = screenHeight - size.height;
+      }
+
+      position.current = { x, y };
+
+      if (alienRef.current) {
+        alienRef.current.style.transform = `translate(${x}px, ${y}px)`;
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const handleAnimation = () => {
@@ -24,11 +47,9 @@ const FlyingAlien: React.FC = () => {
       let { vx, vy } = velocity.current;
 
       if (x + size.width >= screenWidth || x <= 0) {
-        console.log('Hit horizontal boundary');
         vx = -vx;
       }
       if (y + size.height >= screenHeight || y <= 0) {
-        console.log('Hit verticall boundary');
         vy = -vy;
       }
 

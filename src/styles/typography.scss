@@ -1,17 +1,19 @@
-@mixin heading($size: 24px, $weight: 600, $line-height: 1.2) {
-  font-size: $size;
+@use "~styles/mixins.scss" as *;
+
+@mixin heading($weight: 600) {
+  @include fluid(font-size, 20, 32);
   font-weight: $weight;
-  line-height: $line-height;
+  line-height: 1.2;
 }
 
-@mixin textS($size: 14px, $weight: 400, $line-height: 1.5) {
-  font-size: $size;
+@mixin textS($weight: 400) {
+  @include fluid(font-size, 10, 14);
   font-weight: $weight;
-  line-height: $line-height;
+  line-height: 1.5;
 }
 
-@mixin textM($size: 16px, $weight: 400, $line-height: 1.5) {
-  font-size: $size;
+@mixin textM($weight: 400) {
+  @include fluid(font-size, 12, 16);
   font-weight: $weight;
-  line-height: $line-height;
+  line-height: 1.5;
 }

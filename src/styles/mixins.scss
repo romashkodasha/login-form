@@ -1,0 +1,16 @@
+@use "sass:math";
+
+@mixin fluid($property, $min, $max, $screen-min: 350, $screen-max: 1440) {
+  #{$property}: #{$min}px;
+
+  @media only screen and (min-width: #{$screen-min}px) {
+    #{$property}: calc(
+      #{$min}px + #{($max - $min)} * (100vw - #{$screen-min}px) /
+        (#{$screen-max} - #{$screen-min})
+    );
+  }
+
+  @media only screen and (min-width: #{$screen-max}px) {
+    #{$property}: #{$max}px;
+  }
+}

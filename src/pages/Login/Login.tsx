@@ -14,6 +14,15 @@ const Login: React.FC = () => {
   const [error, setError] = React.useState<string | null>(null);
   const [success, setSuccess] = React.useState(false);
 
+  const [isDesktop, setIsDesktop] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkScreen = () => setIsDesktop(window.innerWidth >= 1280);
+    checkScreen();
+    window.addEventListener('resize', checkScreen);
+    return () => window.removeEventListener('resize', checkScreen);
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
@@ -46,7 +55,7 @@ const Login: React.FC = () => {
 
   return (
     <div className={s.page}>
-      <FlyingAlien />
+      {isDesktop && <FlyingAlien />}
       <div className={s.container}>
         <div className={s.login}>
           <h2 className={s.title}>Login</h2>
@@ -82,16 +91,18 @@ const Login: React.FC = () => {
               </a>
             </div>
             <div className={s.buttonContainer}>
-              {error && (
-                <p role="alert" className={s.error}>
-                  {error}
-                </p>
-              )}
-              {success && (
-                <p role="status" className={s.success}>
-                  Welcome back!👽
-                </p>
-              )}
+              <div className={s.message}>
+                {error && (
+                  <p role="alert" className={s.error}>
+                    {error}
+                  </p>
+                )}
+                {success && (
+                  <p role="status" className={s.success}>
+                    Welcome back!👽
+                  </p>
+                )}
+              </div>
               <Button type="submit" loading={loading} className={s.button}>
                 Login
               </Button>
@@ -100,7 +111,7 @@ const Login: React.FC = () => {
         </div>
       </div>
       <p className={s.footer}>
-        Don't have an account?{' '}
+        Don't have an account? <br />
         <a href="#" id="register" className={s.link}>
           Register
         </a>

@@ -1,5 +1,6 @@
 @use "~styles/colors" as *;
 @use "~styles/typography" as *;
+@use "~styles/mixins" as *;
 
 .page {
   background-image: url("/background.png");
@@ -15,9 +16,8 @@
 }
 
 .container {
-  max-width: 300px;
+  max-width: 360px;
   width: 100%;
-  min-height: 320px;
   position: relative;
   z-index: 1;
   background: rgba(255, 255, 255, 0.1);
@@ -64,24 +64,30 @@
   flex: 1;
 }
 
+.message {
+  @include fluid(min-height, 18, 24);
+  margin-top: 20px;
+}
+
 .error {
+  @include textM;
   color: $red;
-  margin-top: 10px;
 }
 
 .success {
+  @include textM;
   color: $green;
-  margin-top: 10px;
 }
 
 .footer {
   @include textM;
   margin-top: 20px;
+  text-align: center;
 }
 
 .link {
-  font-weight: 500;
   transition: opacity 0.1s ease-in-out;
+  text-decoration: underline;
 
   &:hover,
   &:focus {
