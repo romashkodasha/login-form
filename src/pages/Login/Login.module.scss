@@ -1,5 +1,4 @@
 @use "~styles/colors" as *;
-@use "~styles/typography" as *;
 @use "~styles/mixins" as *;
 
 .page {
@@ -47,8 +46,8 @@
 }
 
 .title {
-  @include heading;
   margin-bottom: 20px;
+  @include heading;
 }
 
 .options {
@@ -65,24 +64,24 @@
 }
 
 .message {
-  @include fluid(min-height, 18, 24);
   margin-top: 20px;
+  @include fluid(min-height, 24, 27);
 }
 
 .error {
-  @include textM;
   color: $red;
+  @include textM;
 }
 
 .success {
-  @include textM;
   color: $green;
+  @include textM;
 }
 
 .footer {
-  @include textM;
   margin-top: 20px;
   text-align: center;
+  @include textM;
 }
 
 .link {

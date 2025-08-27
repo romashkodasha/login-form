@@ -14,3 +14,21 @@
     #{$property}: #{$max}px;
   }
 }
+
+@mixin heading($weight: 600) {
+  font-weight: $weight;
+  line-height: 1.2;
+  @include fluid(font-size, 20, 32);
+}
+
+@mixin textS($weight: 400) {
+  font-weight: $weight;
+  line-height: 1.5;
+  @include fluid(font-size, 12, 14);
+}
+
+@mixin textM($weight: 400) {
+  font-weight: $weight;
+  line-height: 1.5;
+  @include fluid(font-size, 16, 18);
+}

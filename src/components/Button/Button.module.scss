@@ -1,9 +1,10 @@
 @use "~styles/colors" as *;
-@use "~styles/typography" as *;
+@use "~styles/mixins" as *;
 
 .button {
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: $white;
   color: $black;
   padding: 10px;
@@ -24,6 +25,8 @@
     opacity: 0.6;
     cursor: not-allowed;
   }
+  @include textM;
+  @include fluid(min-height, 44, 47);
 }
 
 .spinner {

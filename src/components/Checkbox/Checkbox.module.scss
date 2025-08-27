@@ -1,5 +1,5 @@
 @use "~styles/colors" as *;
-@use "~styles/typography" as *;
+@use "~styles/mixins" as *;
 
 .checkbox {
   display: flex;

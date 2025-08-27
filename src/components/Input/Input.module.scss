@@ -1,5 +1,5 @@
 @use "~styles/colors" as *;
-@use "~styles/typography" as *;
+@use "~styles/mixins" as *;
 
 .wrapper {
   display: flex;
@@ -12,7 +12,6 @@
 }
 
 .input {
-  @include textM;
   padding: 10px;
   border: none;
   border-radius: 10px;
@@ -31,4 +30,5 @@
     border-color: $white;
     box-shadow: 0 0 6px $white-40;
   }
+  @include textM;
 }
