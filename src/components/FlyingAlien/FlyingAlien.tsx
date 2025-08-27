@@ -8,6 +8,7 @@ const FlyingAlien: React.FC = () => {
   const position = useRef({ x: 100, y: 100 });
   const velocity = useRef({ vx: VELOCITY, vy: VELOCITY });
   const size = { width: 100, height: 100 };
+  const [isLoaded, setIsLoaded] = React.useState(true);
 
   useEffect(() => {
     const handleResize = () => {
@@ -68,11 +69,14 @@ const FlyingAlien: React.FC = () => {
     return () => cancelAnimationFrame(animationId);
   }, []);
 
+  if (!isLoaded) return null;
+
   return (
     <img
       ref={alienRef}
       src={imageSrc}
       alt="alien"
+      onError={() => setIsLoaded(false)}
       style={{
         position: 'fixed',
         left: 0,
