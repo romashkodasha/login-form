@@ -1,16 +1,6 @@
 @use "~styles/colors" as *;
 @use "~styles/mixins" as *;
 
-.wrapper {
-  display: flex;
-  flex-direction: column;
-}
-
-.label {
-  color: $white;
-  margin-bottom: 5px;
-}
-
 .input {
   padding: 10px;
   border: none;
@@ -31,4 +21,15 @@
     box-shadow: 0 0 6px $white-40;
   }
   @include textM;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }

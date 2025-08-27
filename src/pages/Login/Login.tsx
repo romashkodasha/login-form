@@ -65,15 +65,21 @@ const Login: React.FC = () => {
             className={s.form}
           >
             <Input
+              id="email"
+              label="Email"
               type="email"
               placeholder="Email"
+              autoComplete="email"
               required
               onChange={(e) => setEmail(e.target.value)}
               className={s.input}
             />
             <Input
+              id="password"
+              label="Password"
               type="password"
               placeholder="Password"
+              autoComplete={'current-password'}
               required
               onChange={(e) => setPassword(e.target.value)}
               className={s.input}
